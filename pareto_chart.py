@@ -7,6 +7,8 @@ import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
+st.image('https://i.ibb.co/2nkXKds/2023-06-02-22-43-43.png')
+
 if uploaded_file:
   # Build data frame
   df = pd.read_excel(uploaded_file)
