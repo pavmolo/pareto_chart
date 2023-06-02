@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
+import uuid
+import base64
 
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
