@@ -21,7 +21,7 @@ data = [Bar(name = "Count",  x= df.index, y= df[df.columns[0]], marker= {"color"
 layout = {"title": {'text': f"{df.columns[0]} Pareto", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Times New Roman, monospace"},
           "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 400, 
           "plot_bgcolor": "rgb(255, 255, 255)", "legend": {"x": 0.79, "y": 1.2, "font": {"size": 12, "color": "rgb(44, 44, 84)", "family": "Courier New, monospace"}, 'orientation': 'h',},
-          "yaxis": {"title": df.columns[0]", "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Courier New, monospace"},}, 
+          "yaxis": {"title": df.columns[0], "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Courier New, monospace"},}, 
           "yaxis2": {"side": "right", "range": [0, 100], "title": df.columns[0], "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Courier New, monospace"}, "overlaying": "y", "ticksuffix": " %",},}
 fig = Figure(data=data, layout=layout)
 st.plotly_chart(fig)
