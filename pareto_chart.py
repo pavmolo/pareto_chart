@@ -16,8 +16,8 @@ for i in df.columns[1:]:
   data = pd.concat([df_1, df_2], axis=1)
   data.columns = [i, 'cumsum']
   st.dataframe(data)
-  data = [Bar(name = "Count",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
-          Scatter(line= {"color": "rgb(192, 57, 43)", "width": 3}, name= "Percentage", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
+  data = [Bar(name = "Объемы",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
+          Scatter(line= {"color": "rgb(192, 57, 43)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
   layout = {"title": {'text': f"{i} Pareto", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Times New Roman, monospace"},
             "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 400, 
             "plot_bgcolor": "rgb(255, 255, 255)", "legend": {"x": 0.79, "y": 1.2, "font": {"size": 12, "color": "rgb(44, 44, 84)", "family": "Courier New, monospace"}, 'orientation': 'h',},
