@@ -20,7 +20,7 @@ for i in df.columns[1:]:
     if len(data) < 250:
       q = data[i].quantile(0.2)
     else:
-      q = 30
+      q = data[i].quantile(0.2)
     head_quant = (data[i] > q).sum()
     tail_quant = (data[i] <= q).sum()
     data_without_tail = data.head(head_quant)
