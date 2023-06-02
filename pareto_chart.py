@@ -7,8 +7,9 @@ import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
 def build_dataframe(dataframe, col):
-    grp = dataframe.groupby([col])[col].count()
-    df = pd.DataFrame(grp)
+    #grp = dataframe.groupby([col])[col].count()
+    #df = pd.DataFrame(grp)
+    df = dataframe
     df.index.name = ''
     df = df.sort_values(by=[col], ascending=False)
     count = dataframe[col].value_counts().rename(f'{col}_count')
