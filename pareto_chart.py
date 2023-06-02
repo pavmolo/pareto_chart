@@ -11,7 +11,9 @@ uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multip
 df = pd.read_excel(uploaded_file)
 df_1 = df.set_index(df.columns[0])[df.columns[1]]
 df_1 = df_1.sort_values(ascending=False)
-st.dataframe(df_1)
+df_2 = round(df_1.cumsum()/df_1.sum()*100,2)
+data = pd.concat([df_1, df_2], axis=1)
+st.dataframe(data)
 """
 data = pd.read_excel(uploaded_file)
 data = data.set_index(data.columns[0])
