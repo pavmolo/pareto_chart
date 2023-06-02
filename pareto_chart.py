@@ -13,7 +13,7 @@ def build_dataframe(dataframe, col):
     df.index.name = ''
     df = df.sort_values(by=[col], ascending=False)
     #count = dataframe[col].value_counts().rename(f'{col}_count')
-    percentage = round(df[col].cumsum()/df[column].sum()*100, 2)
+    percentage = round(df[col].cumsum()/df[col].sum()*100, 2)
     df = pd.concat([count, percentage], axis=1)
     return df
   
