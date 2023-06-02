@@ -14,7 +14,7 @@ data_fin = data.copy()
 data_fin = data_fin.set_index(data_fin.index)
 for column in data_columns:
   df = data[[data.columns[0], column]]
-  df = data.sort_values(by=column, ascending=False)
+  df = df.sort_values(by=column, ascending=False)
 
   # Add cumulative percentage column
   data_fin[f"cum_percentage_{column}"] = round(df[column].cumsum()/df[column].sum()*100,2)
