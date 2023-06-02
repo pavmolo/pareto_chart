@@ -11,7 +11,7 @@ uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multip
 data = pd.read_excel(uploaded_file)
 data = data.set_index(data.columns[0])
 for i in data.columns:
-  df = data[i]
+  df = data[[i]]
   st.dataframe(df)
 #data_columns = data.columns[1:]
 
