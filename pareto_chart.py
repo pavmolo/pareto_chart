@@ -6,8 +6,7 @@ import base64
 import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
-def build_dataframe(uploaded_file, col):
-    dataframe = pd.read_excel(uploaded_file)
+def build_dataframe(dataframe, col):
     grp = dataframe.groupby([col])[col].count()
     df = pd.DataFrame(grp)
     df.index.name = ''
@@ -19,7 +18,8 @@ def build_dataframe(uploaded_file, col):
   
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
-df = build_dataframe(uploaded_file, uploaded_file.columns[0])
+dataframe = pd.read_excel(uploaded_file)
+df = build_dataframe(dataframe, uploaded_file.columns[0])
 st.dataframe(df)
 """
 data = pd.read_excel(uploaded_file)
