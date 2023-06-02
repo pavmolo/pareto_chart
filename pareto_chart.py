@@ -7,6 +7,9 @@ import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
+st.markdown('Подготовьте файл эксель по следующей форме **следующей форме**.')
+st.markdown('Столбец может быть один. Если столбцов несколько для одних и тех же строк, то для каждого из них в отдельности будет создано Парето')
+st.markdown('После того, как подготовите файл закачайте его, нажав **Выберите XLSX файл**.')
 st.image('https://i.ibb.co/2nkXKds/2023-06-02-22-43-43.png')
 
 if uploaded_file:
