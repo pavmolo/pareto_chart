@@ -12,14 +12,11 @@ data = pd.read_excel(uploaded_file)
 data = data.set_index(data.columns[0])
 for i in data.columns:
   df = data[[i]]
-  st.dataframe(df)
-#data_columns = data.columns[1:]
-
-"""
-for column in data_columns:
   df = data[[data_columns[0], column]]
   df = df.sort_values(by=column, ascending=False)
   df = df.set_index(data_columns[0])
+  st.dataframe(df)
+  """
   # Add cumulative percentage column
   df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
 
