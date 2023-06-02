@@ -9,7 +9,7 @@ from plotly.graph_objects import Figure, Scatter, Bar
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
 df = pd.read_excel(uploaded_file)
-df_1 = data.set_index(data.columns[0])[df.columns[1])]
+df_1 = data.set_index(data.columns[0])[df.columns[1]]
 st.dataframe(df_1)
 """
 data = pd.read_excel(uploaded_file)
