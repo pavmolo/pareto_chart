@@ -12,7 +12,7 @@ data = pd.read_excel(uploaded_file)
 data_columns = data.columns[1:]
 data_fin = data.copy()
 for column in data_columns:
-  df = data[[df.columns[0], column]]
+  df = data[[data.columns[0], column]]
   df = data.sort_values(by=column, ascending=False)
 
   # Add cumulative percentage column
