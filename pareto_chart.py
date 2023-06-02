@@ -20,7 +20,7 @@ def build_dataframe(dataframe, col):
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
 dataframe = pd.read_excel(uploaded_file)
-df = build_dataframe(dataframe, dataframe.columns[0])
+df = build_dataframe(dataframe, dataframe.columns[1])
 st.dataframe(df)
 """
 data = pd.read_excel(uploaded_file)
