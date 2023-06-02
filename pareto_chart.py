@@ -13,7 +13,7 @@ data_columns = data.columns[1:]
 data_fin = data.copy()
 data_fin = data_fin.set_index(data_fin.columns[0])
 for column in data_columns:
-  df = data[[column]]
+  df = data[column]
   df = df.sort_values(by=column, ascending=False)
 
   # Add cumulative percentage column
