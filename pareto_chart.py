@@ -16,10 +16,7 @@ for column in data_columns:
   df = data.sort_values(by=column, ascending=False)
 
   # Add cumulative percentage column
-  data_fin["cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
-
-  # Display data frame
-  st.dataframe(data_fin)
+  data_fin[f"cum_percentage_{column}"] = round(df[column].cumsum()/df[column].sum()*100,2)
 
   # Set figure and axis
   fig, ax = plt.subplots(figsize=(22,10))
@@ -37,3 +34,4 @@ for column in data_columns:
   ax2.yaxis.set_major_formatter(PercentFormatter())
   ax2.set_ylabel("Cumulative Percentage")
   st.pyplot(fig)
+st.dataframe(data_fin)
