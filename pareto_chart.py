@@ -7,10 +7,7 @@ import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
-st.markdown('Подготовьте файл эксель по следующей форме **следующей форме**.')
-st.markdown('Столбец может быть один. Если столбцов несколько для одних и тех же строк, то для каждого из них в отдельности будет создано Парето')
-st.markdown('После того, как подготовите файл закачайте его, нажав **Browse Files**.')
-st.image('https://i.ibb.co/2nkXKds/2023-06-02-22-43-43.png')
+
 
 if uploaded_file:
   # Build data frame
@@ -33,7 +30,7 @@ if uploaded_file:
       data_tail = data.tail(tail_quant)
       #data = data_without_tail.append(pd.Series(data_tail.sum()), ignore_index=True)
       data = pd.concat([data_without_tail, pd.Series(data_tail.sum(), index=data_without_tail.columns, name='Прочее').to_frame().T], axis=0)
-      st.dataframe(data)
+      #st.dataframe(data)
     # Выводим график Парето
     data = [Bar(name = "Объемы",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
             Scatter(line= {"color": "rgb(192, 57, 43)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
@@ -44,3 +41,8 @@ if uploaded_file:
               "yaxis2": {"side": "right", "range": [0, 100], "title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"}, "overlaying": "y", "ticksuffix": " %",},}
     fig = Figure(data=data, layout=layout)
     st.plotly_chart(fig)
+else:
+  st.markdown('Подготовьте файл эксель по следующей форме **следующей форме**.')
+  st.markdown('Столбец может быть один. Если столбцов несколько для одних и тех же строк, то для каждого из них в отдельности будет создано Парето')
+  st.markdown('После того, как подготовите файл закачайте его, нажав **Browse Files**.')
+  st.image('https://i.ibb.co/2nkXKds/2023-06-02-22-43-43.png')
