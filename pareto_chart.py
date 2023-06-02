@@ -6,12 +6,15 @@ import base64
 import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
-uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
+input_row = st.columns(2)
+with input_row[0]:
+  uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
 
 
 if uploaded_file:
-  st.markdown('Если хотите скачать график файлом **Нажмите на значек фото**.')
-  st.image('https://i.ibb.co/5Yn0CpP/2023-06-02-22-53-06.png')
+  with input_row[1]:
+    st.markdown('Если хотите скачать график файлом **Нажмите на значек фото**.')
+    st.image('https://i.ibb.co/5Yn0CpP/2023-06-02-22-53-06.png')
   
   # Build data frame
   df = pd.read_excel(uploaded_file)
