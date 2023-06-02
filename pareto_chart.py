@@ -10,12 +10,14 @@ from plotly.graph_objects import Figure, Scatter, Bar
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
 data = pd.read_excel(uploaded_file)
 data_columns = data.columns[1:]
+st.dataframe(data_columns)
+"""
 for column in data_columns:
   df = data[[data_columns[0], column]]
   df = df.sort_values(by=column, ascending=False)
   df = df.set_index(data_columns[0])
   # Add cumulative percentage column
-  data_fin[f"cum_percentage_{column}"] = round(df[column].cumsum()/df[column].sum()*100,2)
+  df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
 
   # Set figure and axis
   data = [Bar(name = "Count",  x= df.index, y= df[f'{col}_count'], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(df.index) - 5))}),
@@ -27,3 +29,4 @@ for column in data_columns:
             "yaxis2": {"side": "right", "range": [0, 100], "title": f"Percentage {col}", "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Courier New, monospace"}, "overlaying": "y", "ticksuffix": " %",},}
   fig = Figure(data=data, layout=layout)
 st.dataframe(data_fin)
+"""
