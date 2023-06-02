@@ -18,8 +18,8 @@ for i in df.columns[1:]:
   # транформируем датасет для случая слишком длинного датасета
   if len(data) > 25:
     q = data[i].quantile(0.2)
-    head_quant = (data[i] > q).sum
-    tail_quant = (data[i] <= q).sum
+    head_quant = (data[i] > q).sum()
+    tail_quant = (data[i] <= q).sum()
     data_without_tail = data.head(head_quant)
     data_tail = data.tail(tail_quant)
     #data = data_without_tail.append(pd.Series(data_tail.sum()), ignore_index=True)
