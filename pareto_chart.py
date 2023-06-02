@@ -13,8 +13,9 @@ data = data.set_index(data.columns[0])
 for i in data.columns:
   df = data[[i]]
   df = df.sort_values(by=i, ascending=False)
+  df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
   st.dataframe(df)
-  """
+"""
   # Add cumulative percentage column
   df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
 
