@@ -5,23 +5,12 @@ import uuid
 import base64
 import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
-
-def build_dataframe(dataframe, col):
-    #grp = dataframe.groupby([col])[col].count()
-    #df = pd.DataFrame(grp)
-    df = dataframe
-    df.index.name = ''
-    df = df.sort_values(by=[col], ascending=False)
-    #count = dataframe[col].value_counts().rename(f'{col}_count')
-    percentage = round(df[col].cumsum()/df[col].sum()*100, 2)
-    df = pd.concat([df, percentage], axis=1)
-    return df
   
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
-dataframe = pd.read_excel(uploaded_file)
-df = build_dataframe(dataframe, dataframe.columns[0])
-st.dataframe(df)
+df = pd.read_excel(uploaded_file)
+df_1 = data.set_index(data.columns[0])[df.columns[1])]
+st.dataframe(df_1)
 """
 data = pd.read_excel(uploaded_file)
 data = data.set_index(data.columns[0])
