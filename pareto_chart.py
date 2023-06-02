@@ -29,7 +29,7 @@ for column in data_columns:
 
   # Second y axis (i.e. cumulative percentage)
   ax2 = ax.twinx()
-  ax2.plot(column.index, column["cum_percentage"], color="red", marker="D", ms=7)
+  ax2.plot(data_fin.index, data_fin["cum_percentage"], color="red", marker="D", ms=7)
   ax2.axhline(80, color="orange", linestyle="dashed")
   ax2.yaxis.set_major_formatter(PercentFormatter())
   ax2.set_ylabel("Cumulative Percentage")
