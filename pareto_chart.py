@@ -18,8 +18,8 @@ for i in df.columns[1:]:
   #st.dataframe(data)
   data = [Bar(name = "Объемы",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
           Scatter(line= {"color": "rgb(192, 57, 43)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
-  layout = {"title": {'text': f"{i} Pareto", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Arial"},
-            "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 800, 
+  layout = {"title": {'text': f"Парето {i}", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Arial"},
+            "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 800, "width": 800,
             "plot_bgcolor": "rgb(255, 255, 255)", "legend": {"x": 0.79, "y": 1.2, "font": {"size": 12, "color": "rgb(44, 44, 84)", "family": "Arial"}, 'orientation': 'h',},
             "yaxis": {"title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"},}, 
             "yaxis2": {"side": "right", "range": [0, 100], "title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"}, "overlaying": "y", "ticksuffix": " %",},}
