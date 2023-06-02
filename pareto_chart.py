@@ -17,7 +17,10 @@ for i in df.columns[1:]:
   data.columns = [i, 'cumsum']
   # транформируем датасет для случая слишком длинного датасета
   if len(data) > 25:
-    q = data[i].quantile(0.2)
+    if len(data) < 250:
+      q = data[i].quantile(0.2)
+    else:
+      q = 50
     head_quant = (data[i] > q).sum()
     tail_quant = (data[i] <= q).sum()
     data_without_tail = data.head(head_quant)
