@@ -13,7 +13,7 @@ df_1 = df.set_index(df.columns[0])[df.columns[1]]
 df_1 = df_1.sort_values(ascending=False)
 df_2 = round(df_1.cumsum()/df_1.sum()*100,2)
 data = pd.concat([df_1, df_2], axis=1)
-data.index = [df.columns[0], 'cumsum']
+data.columns = [df.columns[0], 'cumsum']
 st.dataframe(data)
 """
 data = pd.read_excel(uploaded_file)
