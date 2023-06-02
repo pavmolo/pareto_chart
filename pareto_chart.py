@@ -23,7 +23,7 @@ for i in df.columns[1:]:
     data_without_tail = data.head(head_quant)
     data_tail = data.tail(tail_quant)
     #data = data_without_tail.append(pd.Series(data_tail.sum()), ignore_index=True)
-    data = pd.concat([data_without_tail, pd.Series(data_tail.sum())], axis=0, ignore_index=True)
+    data = pd.concat([data_without_tail, pd.Series(data_tail.sum(), index=data_without_tail.columns)], axis=0)
     st.dataframe(data)
   # Выводим график Парето
   data = [Bar(name = "Объемы",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
