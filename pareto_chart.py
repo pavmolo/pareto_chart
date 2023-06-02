@@ -6,8 +6,22 @@ import base64
 import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
+def build_dataframe(uploaded_file, col):
+    dataframe = pd.read_excel(uploaded_file)
+    grp = dataframe.groupby([col])[col].count()
+    df = pd.DataFrame(grp)
+    df.index.name = ''
+    df = df.sort_values(by=[col], ascending=False)
+    count = dataframe[col].value_counts().rename(f'{col}_count')
+    percentage = dataframe[col].value_counts(normalize=True).rename(f'{col}_percentage')
+    df = pd.concat([count, percentage], axis=1)
+    return df
+  
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
+df = build_dataframe(uploaded_file, uploaded_file.columns[0])
+st.dataframe(df)
+"""
 data = pd.read_excel(uploaded_file)
 data = data.set_index(data.columns[0])
 for i in data.columns:
@@ -15,6 +29,8 @@ for i in data.columns:
   df = df.sort_values(by=i, ascending=False)
   df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
   st.dataframe(df)
+  
+"""
 """
   # Add cumulative percentage column
   df[f"cum_percentage"] = round(df[column].cumsum()/df[column].sum()*100,2)
