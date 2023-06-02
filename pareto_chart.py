@@ -10,6 +10,9 @@ uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multip
 
 
 if uploaded_file:
+  st.markdown('Если хотите скачать график файлом **Нажмите на значек фото**.')
+  st.image('https://i.ibb.co/5Yn0CpP/2023-06-02-22-53-06.png')
+  
   # Build data frame
   df = pd.read_excel(uploaded_file)
   for i in df.columns[1:]:
