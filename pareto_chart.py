@@ -15,7 +15,15 @@ for i in df.columns[1:]:
   df_2 = round(df_1.cumsum()/df_1.sum()*100,2)
   data = pd.concat([df_1, df_2], axis=1)
   data.columns = [i, 'cumsum']
-  #st.dataframe(data)
+  # транформируем датасет для случая слишком длинного датасета
+  if len(data) > 25:
+    q = data[i].quantile(0.2)
+    head_quant = len(data[i] > q)
+    tail_quant = len(data[i] <= q)
+    data_without_tail = data.head(head_quant)
+    data_tail = data.tail(tail_quant)
+    data = data_without_tail.append(pd.Series(data_tail.sum()), ignore_index=True)
+  # Выводим график Парето
   data = [Bar(name = "Объемы",  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(71, 71, 135)', 5)) + list(np.repeat('rgb(112, 111, 211)', len(data.index) - 5))}),
           Scatter(line= {"color": "rgb(192, 57, 43)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
   layout = {"title": {'text': f"Парето {i}", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Arial"},
