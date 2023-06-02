@@ -9,7 +9,7 @@ from plotly.graph_objects import Figure, Scatter, Bar
 # Build data frame
 uploaded_file = st.file_uploader("Выберите XLSX файл", accept_multiple_files=False)
 df = pd.read_excel(uploaded_file)
-for i in df.columns:
+for i in df.columns[1:]:
   df_1 = df.set_index(df.columns[0])[i]
   df_1 = df_1.sort_values(ascending=False)
   df_2 = round(df_1.cumsum()/df_1.sum()*100,2)
