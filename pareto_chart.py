@@ -27,7 +27,7 @@ if uploaded_file:
     quantile_02 = data[i].quantile(0.2)
     pivots = pd.concat([data.head((data[i] > quantile_02).sum()).sum().to_frame().T, 
                         data.tail((data[i] <= quantile_02).sum()).sum().to_frame().T], axis=0)
-    st.table(df)
+    st.table(pivots)
     
     # транформируем датасет для случая слишком длинного датасета
     if len(data) > 25:
