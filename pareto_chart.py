@@ -51,7 +51,7 @@ if uploaded_file:
             Scatter(line= {"color": "rgb(233, 72, 64)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
     layout = {"title": {'text': f"Парето {i}", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Arial"},
               "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 800, "width": 1200,
-              "plot_bgcolor": "rgb(255, 255, 255)", "legend": {"x": 0.79, "y": 1, "font": {"size": 12, "color": "rgb(16, 50, 115)", "family": "Arial"}, 'orientation': 'h',},
+              "plot_bgcolor": "rgb(255, 255, 255)", "legend": {"x": 0.79, "y": 0.5, "font": {"size": 12, "color": "rgb(16, 50, 115)", "family": "Arial"}, 'orientation': 'h',},
               "yaxis": {"title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"},}, 
               "yaxis2": {"side": "right", "range": [0, 100], "title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"}, "overlaying": "y", "ticksuffix": " %",},}
     fig = Figure(data=data, layout=layout)
