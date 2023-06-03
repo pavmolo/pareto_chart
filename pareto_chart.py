@@ -25,9 +25,13 @@ if uploaded_file:
     data = pd.concat([df_1, df_2], axis=1)
     data.columns = [i, 'cumsum']
     quantile_02 = data[i].quantile(0.2)
-    st.title(data[i].head((data[i] > quantile_02).sum()).sum())
-    st.title(data[i].tail((data[i] <= quantile_02).sum()).sum())
-    # st.table(pivots)
+    quantile_lover = data[i].tail((data[i] <= quantile_02).sum()).sum()
+    quantile_higher = data[i].head((data[i] > quantile_02).sum()).sum()
+    total = quantile_lover + quantile_higher
+    quantile_lover_share = (quantile_lover / total) * 100
+    quantile_higher_share = (quantile_higher / total) * 100
+    df_total = pd.DataFrame([quantile_higher_share, quantile_lover_share], columns = ['20% "голова" содержит', '80% "хвост" содержит'], index = [i] 
+    st.table(df_total)
     
     # транформируем датасет для случая слишком длинного датасета
     if len(data) > 25:
