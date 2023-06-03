@@ -47,7 +47,7 @@ if uploaded_file:
       data = pd.concat([data_without_tail, pd.Series(data_tail.sum(), index=data_without_tail.columns, name='Прочее').to_frame().T], axis=0)
       #st.dataframe(data)
     # Выводим график Парето
-    data = [Bar(name = data.index,  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(16, 50, 115)', 5)) + list(np.repeat('rgb(0, 163, 194)', len(data.index) - 5))}),
+    data = [Bar(name = 'Объем',  x= data.index, y= data[i], marker= {"color": list(np.repeat('rgb(16, 50, 115)', 5)) + list(np.repeat('rgb(0, 163, 194)', len(data.index) - 5))}),
             Scatter(line= {"color": "rgb(233, 72, 64)", "width": 3}, name= "Суммарные проценты", x=  data.index, y= data['cumsum'], yaxis= "y2", mode='lines+markers'),]
     layout = {"title": {'text': f"Парето {i}", 'font': dict(size=30)}, "font": {"size": 14, "color": "rgb(44, 44, 84)", "family": "Arial"},
               "margin": {"b": 20, "l": 50, "r": 50, "t": 10,}, "height": 800, "width": 1200,
