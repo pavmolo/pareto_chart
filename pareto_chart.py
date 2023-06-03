@@ -31,7 +31,7 @@ if uploaded_file:
     quantile_lover_share = (quantile_lover / total) * 100
     quantile_higher_share = (quantile_higher / total) * 100
     df_total = pd.DataFrame([[quantile_higher_share, quantile_lover_share]], columns = ['20% "голова" содержит, %%', '80% "хвост" содержит, %%'], index = [i])
-    st.table(df_total)
+    
     
     # транформируем датасет для случая слишком длинного датасета
     if len(data) > 25:
@@ -56,6 +56,11 @@ if uploaded_file:
               "yaxis2": {"side": "right", "range": [0, 100], "title": i, "titlefont": {"size": 16, "color": "rgb(71, 71, 135)", "family": "Arial"}, "overlaying": "y", "ticksuffix": " %",},}
     fig = Figure(data=data, layout=layout)
     st.plotly_chart(fig)
+    st.title('Таблица парето')
+    st.table(df_total)
+    st.markdown('----------------------------------------------------')
+    st.markdown('----------------------------------------------------')
+    st.markdown('----------------------------------------------------')
 else:
   st.markdown('Подготовьте файл эксель по следующей форме **следующей форме**.')
   st.markdown('Столбец может быть один. Если столбцов несколько для одних и тех же строк, то для каждого из них в отдельности будет создано Парето')
