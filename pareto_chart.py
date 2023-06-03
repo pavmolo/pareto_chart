@@ -30,7 +30,7 @@ if uploaded_file:
     total = quantile_lover + quantile_higher
     quantile_lover_share = (quantile_lover / total) * 100
     quantile_higher_share = (quantile_higher / total) * 100
-    df_total = pd.DataFrame([[quantile_higher_share, quantile_lover_share]], columns = ['20% "голова" содержит', '80% "хвост" содержит'], index = [i])
+    df_total = pd.DataFrame([[quantile_higher_share, quantile_lover_share]], columns = ['20% "голова" содержит, %%', '80% "хвост" содержит, %%'], index = [i])
     st.table(df_total)
     
     # транформируем датасет для случая слишком длинного датасета
