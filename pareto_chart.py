@@ -25,9 +25,9 @@ if uploaded_file:
     data = pd.concat([df_1, df_2], axis=1)
     data.columns = [i, 'cumsum']
     quantile_02 = data[i].quantile(0.2)
-    pivots = pd.concat([data[i].head((data[i] > quantile_02).sum()).sum(), 
-                        data[i].tail((data[i] <= quantile_02).sum()).sum()], axis=0)
-    st.table(pivots)
+    data[i].head((data[i] > quantile_02).sum()).sum()
+    data[i].tail((data[i] <= quantile_02).sum()).sum()
+    # st.table(pivots)
     
     # транформируем датасет для случая слишком длинного датасета
     if len(data) > 25:
