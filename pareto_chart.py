@@ -24,6 +24,11 @@ if uploaded_file:
     df_2 = round(df_1.cumsum()/df_1.sum()*100,2)
     data = pd.concat([df_1, df_2], axis=1)
     data.columns = [i, 'cumsum']
+    quantile_02 = data[i].quantile(0.2)
+    pivots = pd.concat([data.head((data[i] > quantile_02).sum()).sum().to_frame().T, 
+                        data.tail((data[i] <= quantile_02).sum()).sum().to_frame().T], axis=0)
+    st.table(df)
+    
     # транформируем датасет для случая слишком длинного датасета
     if len(data) > 25:
       if len(data) < 250:
