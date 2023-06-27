@@ -1,8 +1,6 @@
 # Import required libraries
 import streamlit as st
 import pandas as pd
-import uuid
-import base64
 import numpy as np
 from plotly.graph_objects import Figure, Scatter, Bar
 
